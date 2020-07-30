@@ -1,6 +1,13 @@
 import React from "react";
-import "./index.css";
+import List from "./components/List/List";
+import TaskList from "./context";
 
-const App = () => <h1>Siema</h1>;
+const App = () => {
+  return (
+    <TaskList>
+      <List />
+    </TaskList>
+  );
+};
 
 export default App;
