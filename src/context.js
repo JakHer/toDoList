@@ -10,6 +10,8 @@ const TaskList = ({ children }) => {
     { title: "Cleanup Apartament", id: 3 },
   ]);
 
+  const [editItem, setEditItem] = useState(null);
+
   const addTask = (title) => {
     setTasks([...tasks, { title, id: uuid() }]);
   };
@@ -18,12 +20,37 @@ const TaskList = ({ children }) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const clearList = (e) => {
+  const clearList = () => {
     setTasks([]);
   };
 
+  const findItem = (id) => {
+    const item = tasks.find((task) => task.id === id);
+
+    setEditItem(item);
+  };
+
+  const editTask = (title, id) => {
+    const newTasks = tasks.map((task) =>
+      task.id === id ? { title, id } : task
+    );
+
+    setTasks(newTasks);
+    setEditItem(null);
+  };
+
   return (
-    <AppContext.Provider value={{ tasks, addTask, removeTask, clearList }}>
+    <AppContext.Provider
+      value={{
+        tasks,
+        addTask,
+        removeTask,
+        clearList,
+        findItem,
+        editTask,
+        editItem,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
