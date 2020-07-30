@@ -8,7 +8,7 @@ const List = () => {
   return (
     <ul>
       {tasks.map((task) => {
-        return <ListItem task={task} />;
+        return <ListItem task={task} key={task.id} />;
       })}
     </ul>
   );

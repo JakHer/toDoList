@@ -1,8 +1,8 @@
 import React from "react";
 
-const ListItem = () => (
+const ListItem = ({ task }) => (
   <li>
-    <h2>task title</h2>
+    <h2>{task.title}</h2>
     <div>
       <button>delete</button>
       <button>edit</button>
