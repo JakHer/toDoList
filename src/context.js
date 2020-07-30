@@ -14,8 +14,12 @@ const TaskList = ({ children }) => {
     setTasks([...tasks, { title, id: uuid() }]);
   };
 
+  const removeTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
-    <AppContext.Provider value={{ tasks, addTask }}>
+    <AppContext.Provider value={{ tasks, addTask, removeTask }}>
       {children}
     </AppContext.Provider>
   );
