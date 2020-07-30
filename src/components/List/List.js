@@ -6,11 +6,17 @@ const List = () => {
   const { tasks } = useContext(AppContext);
 
   return (
-    <ul>
-      {tasks.map((task) => {
-        return <ListItem task={task} key={task.id} />;
-      })}
-    </ul>
+    <div>
+      {tasks.length ? (
+        <ul>
+          {tasks.map((task) => {
+            return <ListItem task={task} key={task.id} />;
+          })}
+        </ul>
+      ) : (
+        <h1>Currently task list is empty</h1>
+      )}
+    </div>
   );
 };
 

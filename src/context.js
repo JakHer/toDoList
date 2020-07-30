@@ -18,8 +18,12 @@ const TaskList = ({ children }) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const clearList = (e) => {
+    setTasks([]);
+  };
+
   return (
-    <AppContext.Provider value={{ tasks, addTask, removeTask }}>
+    <AppContext.Provider value={{ tasks, addTask, removeTask, clearList }}>
       {children}
     </AppContext.Provider>
   );
