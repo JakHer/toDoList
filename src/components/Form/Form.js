@@ -2,7 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context";
 
 const Form = () => {
-  const { addTask, clearList, editItem, editTask } = useContext(AppContext);
+  const { addTask, clearList, editItem, editTask, doNothing } = useContext(
+    AppContext
+  );
   const [title, setTitle] = useState(``);
 
   const handleChangeFn = (e) => {
@@ -16,6 +18,7 @@ const Form = () => {
       setTitle("");
     } else {
       editTask(title, editItem.id);
+      setTitle("");
     }
   };
 
@@ -33,15 +36,19 @@ const Form = () => {
           required
           placeholder="Add new task"
         ></input>
-        <label htmlFor="1"></label>
+        <label htmlFor={title}></label>
         <button type="submit">
           {editItem ? "Edit " : "Add "}
           task
         </button>
       </form>
-      <button type="clear" onClick={clearList}>
-        Clear
-      </button>
+      {editItem ? (
+        <button onClick={doNothing}>Stop Editing</button>
+      ) : (
+        <button type="clear" onClick={clearList}>
+          Clear
+        </button>
+      )}
     </>
   );
 };

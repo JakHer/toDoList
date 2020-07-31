@@ -25,9 +25,14 @@ const TaskList = ({ children }) => {
   };
 
   const findItem = (id) => {
+    setEditItem(null);
     const item = tasks.find((task) => task.id === id);
 
     setEditItem(item);
+  };
+
+  const doNothing = () => {
+    setEditItem(null);
   };
 
   const editTask = (title, id) => {
@@ -49,6 +54,7 @@ const TaskList = ({ children }) => {
         findItem,
         editTask,
         editItem,
+        doNothing,
       }}
     >
       {children}
