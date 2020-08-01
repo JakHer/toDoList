@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context";
+import styles from "./Form.module.scss";
 
 const Form = () => {
   const { addTask, clearList, editItem, editTask, doNothing } = useContext(
@@ -28,24 +29,37 @@ const Form = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmitFn}>
-        <input
-          onChange={handleChangeFn}
-          value={title}
-          type="text"
-          required
-          placeholder="Add new task"
-        ></input>
-        <label htmlFor={title}></label>
-        <button type="submit">
+      <form className={styles.form} onSubmit={handleSubmitFn}>
+        <div className={styles.wrapper}>
+          <input
+            className={styles.input}
+            onChange={handleChangeFn}
+            value={title}
+            type="text"
+            required
+            placeholder="Add new task"
+          />
+          <label className={styles.label} htmlFor={title}>
+            {editItem ? "Edit " : "Enter New "}
+            task
+          </label>
+        </div>
+
+        <button className={styles.button} type="submit">
           {editItem ? "Edit " : "Add "}
           task
         </button>
       </form>
       {editItem ? (
-        <button onClick={doNothing}>Stop Editing</button>
+        <button className={styles.button__stop} onClick={doNothing}>
+          Stop Editing
+        </button>
       ) : (
-        <button type="clear" onClick={clearList}>
+        <button
+          className={styles.button__clear}
+          type="clear"
+          onClick={clearList}
+        >
           Clear
         </button>
       )}
