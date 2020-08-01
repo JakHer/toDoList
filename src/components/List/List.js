@@ -1,20 +1,21 @@
 import React, { useContext } from "react";
 import ListItem from "../ListItem/ListItem";
+import styles from "./List.module.scss";
 import { AppContext } from "../../context";
 
 const List = () => {
   const { tasks } = useContext(AppContext);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       {tasks.length ? (
-        <ul>
+        <ul className={styles.list}>
           {tasks.map((task) => {
             return <ListItem task={task} key={task.id} />;
           })}
         </ul>
       ) : (
-        <h1>Currently task list is empty</h1>
+        <h1 className={styles.header}>Currently task list is empty</h1>
       )}
     </div>
   );

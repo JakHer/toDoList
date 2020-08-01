@@ -28,7 +28,7 @@ const Form = () => {
   }, [editItem]);
 
   return (
-    <>
+    <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmitFn}>
         <div className={styles.wrapper}>
           <input
@@ -51,7 +51,7 @@ const Form = () => {
         </button>
       </form>
       {editItem ? (
-        <button className={styles.button__stop} onClick={doNothing}>
+        <button className={styles.button__edit} onClick={doNothing}>
           Stop Editing
         </button>
       ) : (
@@ -63,7 +63,7 @@ const Form = () => {
           Clear
         </button>
       )}
-    </>
+    </div>
   );
 };
 
