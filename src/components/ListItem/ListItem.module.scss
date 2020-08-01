@@ -30,5 +30,18 @@
 
   @media screen and (max-width: 800px) {
     width: 100%;
+    padding-top: 20px;
+  }
+}
+
+.hover {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 28px;
   }
 }

@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ListItem.module.scss";
 
 const ListItem = ({ task }) => {
@@ -8,20 +10,20 @@ const ListItem = ({ task }) => {
     <li className={styles.item}>
       <h2 className={styles.header}>{task.title}</h2>
       <div className={styles.button__container}>
-        {editItem ? null : (
-          <button
-            className={styles.button__delete}
-            onClick={() => removeTask(task.id)}
-          >
-            Delete
-          </button>
-        )}
-        <button
-          className={styles.button__edit}
+        <FontAwesomeIcon
+          className={styles.hover}
           onClick={() => findItem(task.id)}
-        >
-          Edit
-        </button>
+          icon={faEdit}
+          color="#3fbfb8"
+        />
+        {editItem ? null : (
+          <FontAwesomeIcon
+            className={styles.hover}
+            onClick={() => removeTask(task.id)}
+            icon={faTrash}
+            color="#f22613"
+          />
+        )}
       </div>
     </li>
   );
