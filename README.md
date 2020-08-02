@@ -1,5 +1,7 @@
 # Task Manager Application
 
+![Image of Application](https://raw.githubusercontent.com/JakHer/toDoList/master/src/Assets/Images/siteScreen.png)
+
 > To practice React Hooks.
 
 ## Live
