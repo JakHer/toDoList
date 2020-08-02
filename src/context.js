@@ -5,9 +5,9 @@ export const AppContext = React.createContext();
 
 const TaskList = ({ children }) => {
   const initialState = JSON.parse(localStorage.getItem(`tasks`)) || [
-    { title: "Learn React", id: 1 },
-    { title: "Do groceries", id: 2 },
-    { title: "Cleanup Apartament", id: 3 },
+    { title: "Learn React", id: "1" },
+    { title: "Do groceries", id: "2" },
+    { title: "Cleanup Apartament", id: "3" },
   ];
 
   const [tasks, setTasks] = useState(initialState);
@@ -37,9 +37,10 @@ const TaskList = ({ children }) => {
     setEditItem(item);
   };
 
-  const doNothing = () => {
-    setEditItem(null);
-  };
+  // const doNothing = (id) => {
+  //   const item = tasks.find((task) => task.id === id);
+  //   console.log(item);
+  // };
 
   const editTask = (title, id) => {
     const newTasks = tasks.map((task) =>
@@ -60,7 +61,6 @@ const TaskList = ({ children }) => {
         findItem,
         editTask,
         editItem,
-        doNothing,
       }}
     >
       {children}

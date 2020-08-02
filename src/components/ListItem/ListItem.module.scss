@@ -13,6 +13,11 @@
   }
 }
 
+.itemActive {
+  @extend .item;
+  background-color: rgba(63, 191, 184, 0.7);
+}
+
 .header {
   width: 100%;
 

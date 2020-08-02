@@ -7,14 +7,14 @@ import styles from "./ListItem.module.scss";
 const ListItem = ({ task }) => {
   const { editItem, removeTask, findItem } = useContext(AppContext);
   return (
-    <li className={styles.item}>
+    <li className={editItem ? styles.itemActive : styles.item}>
       <h2 className={styles.header}>{task.title}</h2>
       <div className={styles.button__container}>
         <FontAwesomeIcon
           className={styles.hover}
           onClick={() => findItem(task.id)}
           icon={faEdit}
-          color="#3fbfb8"
+          color={editItem ? "#fff" : "#3fbfb8"}
         />
         {editItem ? null : (
           <FontAwesomeIcon

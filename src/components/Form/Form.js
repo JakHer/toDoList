@@ -3,9 +3,7 @@ import { AppContext } from "../../context";
 import styles from "./Form.module.scss";
 
 const Form = () => {
-  const { addTask, clearList, editItem, editTask, doNothing } = useContext(
-    AppContext
-  );
+  const { addTask, clearList, editItem, editTask } = useContext(AppContext);
   const [title, setTitle] = useState(``);
 
   const handleChangeFn = (e) => {
@@ -38,6 +36,7 @@ const Form = () => {
             type="text"
             required
             placeholder="Add new task"
+            maxLength="30"
           />
           <label className={styles.label} htmlFor={title}>
             {editItem ? "Edit " : "Enter New "}
@@ -51,7 +50,7 @@ const Form = () => {
         </button>
       </form>
       {editItem ? (
-        <button className={styles.button__edit} onClick={doNothing}>
+        <button className={styles.button__edit} onClick={editTask}>
           Stop Editing
         </button>
       ) : (

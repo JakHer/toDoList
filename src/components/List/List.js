@@ -11,7 +11,14 @@ const List = () => {
       {tasks.length ? (
         <ul className={styles.list}>
           {tasks.map((task) => {
-            return <ListItem task={task} key={task.id} />;
+            return (
+              <ListItem
+                task={task}
+                key={task.id}
+                taskId={task.id}
+                taskTitle={task.title}
+              />
+            );
           })}
         </ul>
       ) : (
